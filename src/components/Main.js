@@ -1,4 +1,15 @@
-function Main(props) {
+import Card from './Card';
+
+function Main({
+  onEditProfile,
+  onAddPlace,
+  onEditAvatar,
+  userName,
+  userDescription,
+  userAvatar,
+  cards,
+  onCardClick,
+}) {
   return (
     <main className='content'>
       <section className='profile' aria-label='Профиль'>
@@ -7,27 +18,35 @@ function Main(props) {
             <button
               className='profile__avatar-edit'
               type='button'
-              onClick={props.onEditAvatar}
+              onClick={onEditAvatar}
             ></button>
-            <img className='profile__avatar-image' src='#' alt='Аватар' />
+            <img
+              className='profile__avatar-image'
+              src={userAvatar}
+              alt='Аватар'
+            />
           </div>
-          <h1 className='profile__info-name'>Жак-Ив Кусто</h1>
+          <h1 className='profile__info-name'>{userName}</h1>
           <button
             className='profile__button profile__button_edit'
             type='button'
-            onClick={props.onEditProfile}
+            onClick={onEditProfile}
           ></button>
-          <p className='profile__info-job'>Исследователь океана</p>
+          <p className='profile__info-job'>{userDescription}</p>
         </div>
         <button
           className='profile__button profile__button_add'
           type='button'
-          onClick={props.onAddPlace}
+          onClick={onAddPlace}
         ></button>
       </section>
 
       <section className='elements' aria-label='Места'>
-        <ul className='cards'></ul>
+        <ul className='cards'>
+          {cards.map((card) => (
+            <Card card={card} onCardClick={onCardClick} />
+          ))}
+        </ul>
       </section>
     </main>
   );

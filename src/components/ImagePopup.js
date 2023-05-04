@@ -1,9 +1,9 @@
 function ImagePopup({ card, onClose }) {
+  const checkCard = card !== null;
+
   return (
     <div
-      className={
-        'popup popup_for_full-image' + (card !== null && ' popup_opened')
-      }
+      className={'popup popup_for_full-image' + (checkCard && ' popup_opened')}
     >
       <figure className='popup__container-image'>
         <button
@@ -13,11 +13,11 @@ function ImagePopup({ card, onClose }) {
         ></button>
         <img
           className='popup__full-image'
-          src={card !== null ? card.link : '#'}
-          alt={card !== null ? card.name : ''}
+          src={checkCard ? card.link : '#'}
+          alt={checkCard ? card.name : ''}
         />
         <figcaption className='popup__caption'>
-          {card !== null ? card.name : ''}
+          {checkCard ? card.name : ''}
         </figcaption>
       </figure>
     </div>

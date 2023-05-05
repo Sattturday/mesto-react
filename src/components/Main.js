@@ -44,9 +44,7 @@ function Main({
       <section className='elements' aria-label='Места'>
         <ul className='cards'>
           {cards.map((card) => (
-            <li key={card._id}>
-              <Card card={card} onCardClick={onCardClick} />
-            </li>
+            <Card key={card._id} card={card} onCardClick={onCardClick} />
           ))}
         </ul>
       </section>

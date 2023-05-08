@@ -30,7 +30,7 @@
 
 ### **GitHub Pages**
 
-- Открыть сайт в браузере [Mesto](https://sattturday.github.io/mesto-react/)
+- Открыть в браузере сайт [Mesto](https://sattturday.github.io/mesto-react/)
 
 ### **Планы на будущее**
 

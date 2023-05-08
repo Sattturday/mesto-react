@@ -28,6 +28,10 @@
 - [Ссылка на макет в Figma - 3 часть](https://www.figma.com/file/kRVLKwYG3d1HGLvh7JFWRT/JavaScript.-Sprint-6?node-id=0%3A1)
 - [Ссылка на макет в Figma - 4 часть](https://www.figma.com/file/PSdQFRHoxXJFs2FH8IXViF/JavaScript-9-sprint?node-id=0%3A1)
 
+### **GitHub Pages**
+
+- Открыть сайт в браузере [Mesto](https://sattturday.github.io/mesto-react/)
+
 ### **Планы на будущее**
 
 Продолжить разработку проекта.

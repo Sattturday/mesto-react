@@ -3,6 +3,8 @@
 ### Обзор
 
 - Info
+- GitHub Pages
+- Примененные знания
 - Figma
 - Планы на будущее
 
@@ -12,6 +14,10 @@
 Работа выполнена в рамках серии проeктных работ на курсе Web-разработчик (Яндекс Практикум).
 
 Это версия проекта Mesto на React.
+
+### **GitHub Pages**
+
+- Открыть в браузере сайт [Mesto](https://sattturday.github.io/mesto-react/)
 
 ### Примененные знания
 
@@ -27,10 +33,6 @@
 - [Ссылка на макет в Figma - 2 часть](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1)
 - [Ссылка на макет в Figma - 3 часть](https://www.figma.com/file/kRVLKwYG3d1HGLvh7JFWRT/JavaScript.-Sprint-6?node-id=0%3A1)
 - [Ссылка на макет в Figma - 4 часть](https://www.figma.com/file/PSdQFRHoxXJFs2FH8IXViF/JavaScript-9-sprint?node-id=0%3A1)
-
-### **GitHub Pages**
-
-- Открыть в браузере сайт [Mesto](https://sattturday.github.io/mesto-react/)
 
 ### **Планы на будущее**
 

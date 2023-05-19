@@ -23,13 +23,13 @@ class Api {
     });
   }
 
-  setUserInfo({ userJob, userName }) {
+  setUserInfo({ name, about }) {
     return this._request('/users/me', {
       method: 'PATCH',
       headers: this.headers,
       body: JSON.stringify({
-        name: userName,
-        about: userJob,
+        name: name,
+        about: about,
       }),
     });
   }
@@ -55,8 +55,6 @@ class Api {
     return this._request(`/cards/${id}/likes`, {
       method: 'PUT',
       headers: this.headers,
-    }).then((res) => {
-      return res.likes;
     });
   }
 
@@ -64,8 +62,6 @@ class Api {
     return this._request(`/cards/${id}/likes`, {
       method: 'DELETE',
       headers: this.headers,
-    }).then((res) => {
-      return res.likes;
     });
   }
 

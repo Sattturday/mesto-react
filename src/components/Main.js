@@ -1,15 +1,18 @@
+import { useContext } from 'react';
+import { CurrentUserContext } from '../contests/CurrentUserContext';
 import Card from './Card';
 
 function Main({
   onEditProfile,
   onAddPlace,
   onEditAvatar,
-  userName,
-  userDescription,
-  userAvatar,
   cards,
   onCardClick,
+  onCardLike,
+  onCardDelete,
 }) {
+  const currentUser = useContext(CurrentUserContext);
+
   return (
     <main className='content'>
       <section className='profile' aria-label='Профиль'>
@@ -22,17 +25,17 @@ function Main({
             ></button>
             <img
               className='profile__avatar-image'
-              src={userAvatar}
+              src={currentUser.avatar}
               alt='Аватар'
             />
           </div>
-          <h1 className='profile__info-name'>{userName}</h1>
+          <h1 className='profile__info-name'>{currentUser.name}</h1>
           <button
             className='profile__button profile__button_edit'
             type='button'
             onClick={onEditProfile}
           ></button>
-          <p className='profile__info-job'>{userDescription}</p>
+          <p className='profile__info-job'>{currentUser.about}</p>
         </div>
         <button
           className='profile__button profile__button_add'
@@ -44,7 +47,13 @@ function Main({
       <section className='elements' aria-label='Места'>
         <ul className='cards'>
           {cards.map((card) => (
-            <Card key={card._id} card={card} onCardClick={onCardClick} />
+            <Card
+              key={card._id}
+              card={card}
+              onCardClick={onCardClick}
+              onCardLike={onCardLike}
+              onCardDelete={onCardDelete}
+            />
           ))}
         </ul>
       </section>

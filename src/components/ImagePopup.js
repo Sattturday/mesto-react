@@ -1,9 +1,16 @@
 function ImagePopup({ card, onClose }) {
   const checkCard = card !== null;
 
+  function handleClickOverlay(e) {
+    if (e.currentTarget === e.target) {
+      onClose();
+    }
+  }
+
   return (
     <div
       className={'popup popup_for_full-image' + (checkCard && ' popup_opened')}
+      onMouseDown={handleClickOverlay}
     >
       <figure className='popup__container-image'>
         <button

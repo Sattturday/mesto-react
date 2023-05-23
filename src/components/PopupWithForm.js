@@ -9,8 +9,17 @@ function PopupWithForm({
   isLoading,
   loadingText,
 }) {
+  function handleClickOverlay(e) {
+    if (e.currentTarget === e.target) {
+      onClose();
+    }
+  }
+
   return (
-    <div className={`popup popup_for_${name} ${isOpen && ' popup_opened'}`}>
+    <div
+      className={`popup popup_for_${name} ${isOpen && ' popup_opened'}`}
+      onMouseDown={handleClickOverlay}
+    >
       <form
         className='popup__container'
         name={name}

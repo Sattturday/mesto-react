@@ -16,7 +16,7 @@ function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
 
   const [selectedCard, setSelectedCard] = useState(null);
-  const [toBeDeletedCard, setToBeDeletedCard] = useState(null);
+  const [deletedCard, setDeletedCard] = useState(null);
 
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
@@ -93,11 +93,11 @@ function App() {
   }
 
   function handleCardDelete(card) {
-    setToBeDeletedCard(card);
+    setDeletedCard(card);
   }
 
   function handleConfirmDelete() {
-    const cardId = toBeDeletedCard._id;
+    const cardId = deletedCard._id;
 
     api
       .deleteCard(cardId)
@@ -113,7 +113,7 @@ function App() {
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setSelectedCard(null);
-    setToBeDeletedCard(null);
+    setDeletedCard(null);
   }
 
   return (
@@ -150,7 +150,7 @@ function App() {
         />
 
         <ConfirmationPopup
-          isOpen={!!toBeDeletedCard}
+          isOpen={deletedCard}
           onClose={closeAllPopups}
           onConfirm={handleConfirmDelete}
         />

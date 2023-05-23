@@ -29,12 +29,11 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, isLoading }) {
     >
       <input
         className='popup__input popup__input_avatar-link'
-        required
-        type='url'
         name='avatarLink'
+        type='url'
         placeholder='https://somewebsite.com/someimage.jpg'
-        id='avatar-link'
         ref={avatarRef}
+        required
       />
       <span className='popup__error avatar-link-error'></span>
     </PopupWithForm>

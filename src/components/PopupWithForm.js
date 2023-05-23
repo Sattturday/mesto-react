@@ -6,6 +6,8 @@ function PopupWithForm({
   onClose,
   onSubmit,
   children,
+  isLoading,
+  loadingText,
 }) {
   return (
     <div className={`popup popup_for_${name} ${isOpen && ' popup_opened'}`}>
@@ -24,7 +26,7 @@ function PopupWithForm({
         <fieldset className='popup__items'>
           {children}
           <button type='submit' className='popup__button'>
-            {buttonText}
+            {isLoading ? loadingText : buttonText}
           </button>
         </fieldset>
       </form>

@@ -1,6 +1,6 @@
 import PopupWithForm from './PopupWithForm';
 
-function ConfirmationPopup({ isOpen, onClose, onConfirm }) {
+function ConfirmationPopup({ isOpen, onClose, onConfirm, isLoading }) {
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -15,6 +15,8 @@ function ConfirmationPopup({ isOpen, onClose, onConfirm }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      isLoading={isLoading}
+      loadingText='Удаление...'
     />
   );
 }

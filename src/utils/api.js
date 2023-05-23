@@ -40,13 +40,13 @@ class Api {
     });
   }
 
-  addCard({ cardName, cardLink }) {
+  addCard({ name, link }) {
     return this._request('/cards', {
       method: 'POST',
       headers: this.headers,
       body: JSON.stringify({
-        name: cardName,
-        link: cardLink,
+        name: name,
+        link: link,
       }),
     });
   }
@@ -80,12 +80,12 @@ class Api {
     });
   }
 
-  updateAvatar({ avatarLink }) {
+  updateAvatar({ avatar }) {
     return this._request('/users/me/avatar', {
       method: 'PATCH',
       headers: this.headers,
       body: JSON.stringify({
-        avatar: avatarLink,
+        avatar: avatar,
       }),
     });
   }

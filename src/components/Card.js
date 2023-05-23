@@ -7,7 +7,7 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
   const isLiked = card.likes.some((i) => i._id === currentUser._id);
   const activeLikeButtonClassName = 'cards__like-icon_active';
 
-  function handleClick() {
+  function handleCardClick() {
     onCardClick(card);
   }
 
@@ -15,7 +15,7 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
     onCardLike(card);
   }
 
-  function handleDeleteClick() {
+  function handleTrashClick() {
     onCardDelete(card);
   }
 
@@ -25,14 +25,14 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
         className='cards__image'
         src={card.link}
         alt={card.name}
-        onClick={handleClick}
+        onClick={handleCardClick}
       />
 
       {isOwn && (
         <button
           className='cards__delete'
           type='button'
-          onClick={handleDeleteClick}
+          onClick={handleTrashClick}
         ></button>
       )}
       <div className='cards__info'>

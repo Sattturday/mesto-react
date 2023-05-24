@@ -1,32 +1,23 @@
-import { useState, useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import { useForm } from '../hooks/useForm';
 import PopupWithForm from './PopupWithForm';
 
 function EditProfilePopup({ isOpen, onClose, onUpdateUser, isLoading }) {
   const currentUser = useContext(CurrentUserContext);
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
+  const { values, handleChange, setValues } = useForm({});
 
   useEffect(() => {
-    setName(currentUser.name);
-    setDescription(currentUser.about);
-  }, [currentUser]);
-
-  function handleChangeName(e) {
-    setName(e.target.value);
-  }
-
-  function handleChangeDescription(e) {
-    setDescription(e.target.value);
-  }
+    setValues({
+      name: currentUser.name,
+      about: currentUser.about,
+    });
+  }, [setValues, currentUser, isOpen]);
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    onUpdateUser({
-      name,
-      about: description,
-    });
+    onUpdateUser(values);
   }
 
   return (
@@ -42,28 +33,26 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser, isLoading }) {
     >
       <input
         className='popup__input popup__input_name'
+        name='name'
         type='text'
         minLength='2'
         maxLength='40'
-        required
-        name='userName'
         placeholder='Имя'
-        id='user-name'
-        value={name}
-        onChange={handleChangeName}
+        value={values.name || ''}
+        onChange={handleChange}
+        required
       />
       <span className='popup__error user-name-error'></span>
       <input
         className='popup__input popup__input_job'
+        name='about'
         type='text'
         minLength='2'
         maxLength='200'
-        required
-        name='userJob'
         placeholder='Род деятельности'
-        id='user-job'
-        value={description}
-        onChange={handleChangeDescription}
+        value={values.about || ''}
+        onChange={handleChange}
+        required
       />
       <span className='popup__error user-job-error'></span>
     </PopupWithForm>

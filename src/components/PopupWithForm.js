@@ -1,3 +1,5 @@
+import { usePopupClose } from '../hooks/usePopupClose';
+
 function PopupWithForm({
   name,
   title,
@@ -9,28 +11,17 @@ function PopupWithForm({
   isLoading,
   loadingText,
 }) {
-  function handleClickOverlay(e) {
-    if (e.currentTarget === e.target) {
-      onClose();
-    }
-  }
+  usePopupClose(isOpen, onClose);
 
   return (
-    <div
-      className={`popup popup_for_${name} ${isOpen && ' popup_opened'}`}
-      onMouseDown={handleClickOverlay}
-    >
+    <div className={`popup popup_for_${name} ${isOpen && ' popup_opened'}`}>
       <form
         className='popup__container'
         name={name}
-        noValidate
         onSubmit={onSubmit}
+        noValidate
       >
-        <button
-          type='button'
-          className='popup__close'
-          onClick={onClose}
-        ></button>
+        <button className='popup__close' type='button' onClick={onClose} />
         <p className='popup__title'>{title}</p>
         <fieldset className='popup__items'>
           {children}

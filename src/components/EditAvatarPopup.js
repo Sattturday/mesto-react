@@ -1,41 +1,60 @@
-import { useRef, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useForm } from '../hooks/useForm';
 import PopupWithForm from './PopupWithForm';
+import { useValidation } from '../hooks/useValidation';
 
 function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, isLoading }) {
-  const avatarRef = useRef();
+  // const avatarRef = useRef();
+  const { isValid, errors, validateForm } = useValidation();
+  const { values, handleChange, setValues } = useForm(validateForm, {});
 
   useEffect(() => {
-    avatarRef.current.value = '';
-  }, [isOpen]);
+    setValues({ avatar: '' });
+  }, [setValues, isOpen]);
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    onUpdateAvatar({
-      avatar: avatarRef.current.value,
-    });
+    onUpdateAvatar(values);
   }
+
+  // useEffect(() => {
+  //   avatarRef.current.value = '';
+  // }, [isOpen]);
+
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+
+  //   onUpdateAvatar({
+  //     avatar: avatarRef.current.value,
+  //   });
+  // }
 
   return (
     <PopupWithForm
       name='add-avatar'
       title='Обновить аватар'
       buttonText='Сохранить'
-      isOpen={isOpen}
+      loadingText='Сохранение...'
       onClose={onClose}
       onSubmit={handleSubmit}
+      isOpen={isOpen}
       isLoading={isLoading}
-      loadingText='Сохранение...'
+      isValid={isValid}
     >
       <input
-        className='popup__input popup__input_avatar-link'
-        name='avatarLink'
+        className={`popup__input ${
+          (errors.avatar && 'popup__input_type_error') || ''
+        }`}
+        name='avatar'
         type='url'
         placeholder='https://somewebsite.com/someimage.jpg'
-        ref={avatarRef}
+        value={values.avatar || ''}
+        //       ref={avatarRef}
+        onChange={handleChange}
         required
       />
-      <span className='popup__error avatar-link-error'></span>
+      <span className='popup__error avatar-link-error'>{errors.avatar}</span>
     </PopupWithForm>
   );
 }

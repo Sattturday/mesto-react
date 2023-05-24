@@ -4,12 +4,13 @@ function PopupWithForm({
   name,
   title,
   buttonText,
-  isOpen,
+  loadingText,
   onClose,
   onSubmit,
-  children,
+  isOpen,
   isLoading,
-  loadingText,
+  isValid,
+  children,
 }) {
   usePopupClose(isOpen, onClose);
 
@@ -25,7 +26,12 @@ function PopupWithForm({
         <p className='popup__title'>{title}</p>
         <fieldset className='popup__items'>
           {children}
-          <button type='submit' className='popup__button'>
+          <button
+            className={`popup__button ${
+              (!isValid && ' popup__button_disabled') || ''
+            }`}
+            type='submit'
+          >
             {isLoading ? loadingText : buttonText}
           </button>
         </fieldset>

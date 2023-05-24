@@ -1,9 +1,11 @@
 import { useEffect } from 'react';
 import { useForm } from '../hooks/useForm';
+import { useValidation } from '../hooks/useValidation';
 import PopupWithForm from './PopupWithForm';
 
 function AddPlacePopup({ isOpen, onClose, onAddPlace, isLoading }) {
-  const { values, handleChange, setValues } = useForm({});
+  const { isValid, errors, validateForm } = useValidation();
+  const { values, handleChange, setValues } = useForm(validateForm, {});
 
   useEffect(() => {
     setValues({ name: '', link: '' });
@@ -20,14 +22,17 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace, isLoading }) {
       name='add-card'
       title='Новое место'
       buttonText='Создать'
-      isOpen={isOpen}
+      loadingText='Создание...'
       onClose={onClose}
       onSubmit={handleSubmit}
+      isOpen={isOpen}
       isLoading={isLoading}
-      loadingText='Создание...'
+      isValid={isValid}
     >
       <input
-        className='popup__input popup__input_card-name'
+        className={`popup__input ${
+          (errors.name && 'popup__input_type_error') || ''
+        }`}
         name='name'
         type='text'
         minLength='2'
@@ -37,9 +42,11 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace, isLoading }) {
         onChange={handleChange}
         required
       />
-      <span className='popup__error card-name-error'></span>
+      <span className='popup__error card-name-error'>{errors.name}</span>
       <input
-        className='popup__input popup__input_card-link-image'
+        className={`popup__input ${
+          (errors.link && 'popup__input_type_error') || ''
+        }`}
         name='link'
         required
         type='url'
@@ -47,7 +54,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace, isLoading }) {
         value={values.link || ''}
         onChange={handleChange}
       />
-      <span className='popup__error card-link-error'></span>
+      <span className='popup__error card-link-error'>{errors.link}</span>
     </PopupWithForm>
   );
 }

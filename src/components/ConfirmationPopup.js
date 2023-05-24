@@ -12,11 +12,12 @@ function ConfirmationPopup({ isOpen, onClose, onConfirm, isLoading }) {
       name='confirmation'
       title='Вы уверены?'
       buttonText='Да'
-      isOpen={isOpen}
+      loadingText='Удаление...'
       onClose={onClose}
       onSubmit={handleSubmit}
+      isOpen={isOpen}
       isLoading={isLoading}
-      loadingText='Удаление...'
+      isValid={true}
     />
   );
 }

@@ -1,4 +1,4 @@
-import configApi from './utils';
+import { configApi } from './utils';
 
 class Api {
   constructor({ baseUrl, headers }) {

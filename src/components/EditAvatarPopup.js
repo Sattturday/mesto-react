@@ -5,12 +5,15 @@ import { useValidation } from '../hooks/useValidation';
 
 function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, isLoading }) {
   // const avatarRef = useRef();
-  const { isValid, errors, validateForm } = useValidation();
+  const { isValid, setIsValid, errors, setErrors, validateForm } =
+    useValidation();
   const { values, handleChange, setValues } = useForm(validateForm, {});
 
   useEffect(() => {
     setValues({ avatar: '' });
-  }, [setValues, isOpen]);
+    setIsValid(false);
+    setErrors({});
+  }, [setValues, setIsValid, setErrors, isOpen]);
 
   function handleSubmit(e) {
     e.preventDefault();

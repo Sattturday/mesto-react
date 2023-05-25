@@ -26,5 +26,5 @@ export function useValidation() {
     }
   }
 
-  return { isValid, errors, validateForm };
+  return { isValid, setIsValid, errors, setErrors, validateForm };
 }

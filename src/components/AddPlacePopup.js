@@ -4,12 +4,15 @@ import { useValidation } from '../hooks/useValidation';
 import PopupWithForm from './PopupWithForm';
 
 function AddPlacePopup({ isOpen, onClose, onAddPlace, isLoading }) {
-  const { isValid, errors, validateForm } = useValidation();
+  const { isValid, setIsValid, errors, setErrors, validateForm } =
+    useValidation();
   const { values, handleChange, setValues } = useForm(validateForm, {});
 
   useEffect(() => {
     setValues({ name: '', link: '' });
-  }, [setValues, isOpen]);
+    setIsValid(false);
+    setErrors({});
+  }, [setValues, setIsValid, setErrors, isOpen]);
 
   function handleSubmit(e) {
     e.preventDefault();

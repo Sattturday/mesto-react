@@ -6,7 +6,8 @@ import PopupWithForm from './PopupWithForm';
 
 function EditProfilePopup({ isOpen, onClose, onUpdateUser, isLoading }) {
   const currentUser = useContext(CurrentUserContext);
-  const { isValid, errors, validateForm } = useValidation();
+  const { isValid, setIsValid, errors, setErrors, validateForm } =
+    useValidation();
   const { values, handleChange, setValues } = useForm(validateForm, {});
 
   useEffect(() => {
@@ -14,7 +15,9 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser, isLoading }) {
       name: currentUser.name,
       about: currentUser.about,
     });
-  }, [setValues, currentUser, isOpen]);
+    setIsValid(true);
+    setErrors({});
+  }, [setValues, setIsValid, setErrors, currentUser, isOpen]);
 
   function handleSubmit(e) {
     e.preventDefault();

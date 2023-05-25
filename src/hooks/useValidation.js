@@ -4,8 +4,6 @@ export function useValidation() {
   const [isValid, setIsValid] = useState(false);
   const [errors, setErrors] = useState('');
 
-  // const inputClassName = `${inputClass} ${isValid ? '' : inputErrorClass}`;
-
   function validateForm(event) {
     event.persist();
 

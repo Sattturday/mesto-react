@@ -5,22 +5,21 @@ export function useValidation() {
   const [errors, setErrors] = useState('');
 
   function validateForm(event) {
-    event.persist();
+    const { name, validationMessage } = event.target;
+    const checkValidate = event.target.closest('form').checkValidity();
 
-    const { name, validity, validationMessage } = event.target;
-
-    if (!validity.valid) {
-      setErrors({
-        ...errors,
-        [name]: validationMessage,
-      });
-      setIsValid(false);
-    } else {
+    if (checkValidate) {
       setErrors({
         ...errors,
         [name]: '',
       });
       setIsValid(true);
+    } else {
+      setErrors({
+        ...errors,
+        [name]: validationMessage,
+      });
+      setIsValid(false);
     }
   }
 

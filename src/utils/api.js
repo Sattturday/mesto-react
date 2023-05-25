@@ -40,13 +40,13 @@ class Api {
     });
   }
 
-  addCard({ name, link }) {
+  addCard({ name, cardLink }) {
     return this._request('/cards', {
       method: 'POST',
       headers: this.headers,
       body: JSON.stringify({
         name: name,
-        link: link,
+        link: cardLink,
       }),
     });
   }

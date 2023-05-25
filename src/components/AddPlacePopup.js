@@ -45,7 +45,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace, isLoading }) {
         onChange={handleChange}
         required
       />
-      <span className='popup__error card-name-error'>{errors.name}</span>
+      <span className='popup__error'>{errors.name}</span>
       <input
         className={`popup__input ${
           (errors.cardLink && 'popup__input_type_error') || ''
@@ -57,7 +57,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace, isLoading }) {
         value={values.cardLink || ''}
         onChange={handleChange}
       />
-      <span className='popup__error card-link-error'>{errors.cardLink}</span>
+      <span className='popup__error'>{errors.cardLink}</span>
     </PopupWithForm>
   );
 }

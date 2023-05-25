@@ -57,7 +57,7 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, isLoading }) {
         onChange={handleChange}
         required
       />
-      <span className='popup__error avatar-link-error'>{errors.avatar}</span>
+      <span className='popup__error'>{errors.avatar}</span>
     </PopupWithForm>
   );
 }

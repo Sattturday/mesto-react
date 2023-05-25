@@ -76,16 +76,14 @@ function App() {
 
   function handleUpdateAvatar(data) {
     function makeRequest() {
-      return api
-        .updateAvatar(data)
-        .then((newUserInfo) => setCurrentUser(newUserInfo));
+      return api.updateAvatar(data).then(setCurrentUser);
     }
     handleSubmit(makeRequest);
   }
 
   function handleUpdateUser(data) {
     function makeRequest() {
-      return api.setUserInfo(data).then((data) => setCurrentUser(data));
+      return api.setUserInfo(data).then(setCurrentUser);
     }
     handleSubmit(makeRequest);
   }
@@ -114,9 +112,9 @@ function App() {
     const cardId = deletedCard._id;
 
     function makeRequest() {
-      return api
-        .deleteCard(cardId)
-        .then(setCards((state) => state.filter((c) => c._id !== cardId)));
+      return api.deleteCard(cardId).then(() => {
+        setCards((state) => state.filter((c) => c._id !== cardId));
+      });
     }
     handleSubmit(makeRequest);
   }

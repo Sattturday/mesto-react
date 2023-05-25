@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 export function useValidation() {
   const [isValid, setIsValid] = useState(false);
-  const [errors, setErrors] = useState('');
+  const [errors, setErrors] = useState({});
 
   function validateForm(event) {
     const { name, validationMessage } = event.target;

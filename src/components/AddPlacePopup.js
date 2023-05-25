@@ -9,7 +9,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace, isLoading }) {
   const { values, handleChange, setValues } = useForm(validateForm, {});
 
   useEffect(() => {
-    setValues({ name: '', cardLink: '' });
+    setValues({ name: '', link: '' });
     setIsValid(false);
     setErrors({});
   }, [setValues, setIsValid, setErrors, isOpen]);
@@ -48,16 +48,16 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace, isLoading }) {
       <span className='popup__error'>{errors.name}</span>
       <input
         className={`popup__input ${
-          (errors.cardLink && 'popup__input_type_error') || ''
+          (errors.link && 'popup__input_type_error') || ''
         }`}
-        name='cardLink'
+        name='link'
         required
         type='url'
         placeholder='Ссылка на картинку'
-        value={values.cardLink || ''}
+        value={values.link || ''}
         onChange={handleChange}
       />
-      <span className='popup__error'>{errors.cardLink}</span>
+      <span className='popup__error'>{errors.link}</span>
     </PopupWithForm>
   );
 }

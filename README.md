@@ -15,7 +15,7 @@
 
 1. [Mesto (версия на чистом JavaScript)](https://github.com/Sattturday/mesto/)
 2. Mesto (версия на React) ⬅ этот репозиторий
-3. [Mesto (версия на React с авторизацией и регистрацией)](https://github.com/Sattturday/mesto-react-auth/)
+3. [Mesto (версия на React с авторизацией и регистрацией)](https://github.com/Sattturday/react-mesto-auth)
 
 ### **GitHub Pages**
 

@@ -40,4 +40,4 @@
 
 ✅ Завершено
 
-Дальнейшая разработка ведется в репозитории [Mesto (версия на React с авторизацией и регистрацией)](https://github.com/Sattturday/mesto-react-auth/)
+Дальнейшая разработка ведется в репозитории [Mesto (версия на React с авторизацией и регистрацией)](https://github.com/Sattturday/react-mesto-auth)
